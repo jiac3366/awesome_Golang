@@ -1,3 +1,8 @@
 /apollo_client_go_tem/
 /.idea/
 */.idea/
+
+/alert_grabber/
+/aa_graber/
+/gin_demo/
+country.json
