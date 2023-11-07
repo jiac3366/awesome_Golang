@@ -23,7 +23,7 @@ func invertTree(root *TreeNode) *TreeNode {
 			if node.Left != nil {
 				st.PushBack(node.Left)
 			}
-			st.PushBack(node) //中间节点压栈后再压入nil作为中间节点的标志符
+			st.PushBack(node) //中间节点压栈后再压入nil作为中间节点的标志符，表示它的左右子节点已经入栈，下一次访问到这个节点，直接访问就可以了
 			st.PushBack(nil)
 		} else {
 			// 处理
