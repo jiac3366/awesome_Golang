@@ -1,4 +1,4 @@
-package algo
+package linklist
 
 type LinkNode struct {
 	Key   int

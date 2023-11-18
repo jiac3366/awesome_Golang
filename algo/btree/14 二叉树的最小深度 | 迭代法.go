@@ -1,4 +1,4 @@
-package algo
+package btree
 
 import (
 	"container/list"

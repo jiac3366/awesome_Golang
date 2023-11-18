@@ -1,4 +1,4 @@
-package algo
+package array
 
 func MinSubArrayLen(target int, nums []int) int {
 	// [2,3,1,2,4,3]  7

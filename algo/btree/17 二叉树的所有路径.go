@@ -1,6 +1,8 @@
-package algo
+package btree
 
-import "strconv"
+import (
+	"strconv"
+)
 
 // 递归法
 func binaryTreePaths1(root *TreeNode) []string {

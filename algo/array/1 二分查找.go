@@ -1,4 +1,4 @@
-package algo
+package array
 
 func Search(nums []int, target int) int {
 	_len := len(nums)

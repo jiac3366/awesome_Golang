@@ -1,6 +1,8 @@
-package algo
+package btree
 
-import "math"
+import (
+	"math"
+)
 
 func isBalanced(root *TreeNode) bool {
 	return getHeight(root) != -1

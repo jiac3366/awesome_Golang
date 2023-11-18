@@ -36,12 +36,10 @@ func Test() (err error) {
 func main() {
 
 	handler1 := func() error {
-
 		panic("handler1 fail ")
 		return nil
 	}
 	handler2 := func() error {
-
 		panic("handler2 fail ")
 		return nil
 	}

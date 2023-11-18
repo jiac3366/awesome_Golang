@@ -1,6 +1,8 @@
-package algo
+package btree
 
-import "container/list"
+import (
+	"container/list"
+)
 
 func countNodes(root *TreeNode) int {
 	var num int

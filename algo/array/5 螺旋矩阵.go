@@ -1,4 +1,4 @@
-package algo
+package array
 
 // abca
 func LengthOfLongestSubstring(s string) int {

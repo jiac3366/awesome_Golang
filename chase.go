@@ -1,14 +1,91 @@
 package main
 
 import (
-	"fmt"
-	"unicode/utf8"
+	"math"
 )
 
-func main() {
-	str := `"你好"，世界！` // 包含6个字符，但占用18个字节（每个汉字占3个字节）
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
 
-	fmt.Printf("字符串: %s\n", str)
-	fmt.Printf("字符数: %d\n", len(str))                           // 输出字节数
-	fmt.Printf("Unicode字符数: %d\n", utf8.RuneCountInString(str)) // 输出Unicode字符数
+// 后序遍历
+func maxDepth(root *TreeNode) int {
+
+	if root == nil {
+		return 0
+	}
+
+	left := float64(maxDepth(root.Left))
+	right := float64(maxDepth(root.Right))
+
+	return int(1 + math.Max(left, right))
+}
+
+// 前序遍历
+// 暂时注释
+//var result int
+/**
+ * Definition for a binary tree node.
+ * type TreeNode struct {
+ *     Val int
+ *     Left *TreeNode
+ *     Right *TreeNode
+ * }
+ */
+
+var (
+	_min = math.MaxInt64
+	_max = math.MinInt64
+)
+
+func isValidBST(root *TreeNode) bool {
+
+	findMax(root.Left)
+
+	if root.Val <= _max {
+		return false
+	}
+
+	findMin(root.Right)
+	if root.Val >= _min {
+		return false
+	}
+
+	isLeftValid := isValidBST(root.Left)
+	isRightValid := isValidBST(root.Right)
+
+	return isLeftValid && isRightValid
+
+}
+
+func findMaxValueRecursive(root *TreeNode) int {
+	if root == nil {
+		return math.MinInt64
+	}
+
+	// 递归计算左右子树的最大值
+	leftMax := findMaxValueRecursive(root.Left)
+	rightMax := findMaxValueRecursive(root.Right)
+
+	// 计算当前节点和左右子树的最大值
+	currentMax := int(math.Max(float64(root.Val), math.Max(float64(leftMax), float64(rightMax))))
+
+	return currentMax
+}
+
+func findMinValueRecursive(root *TreeNode) int {
+	if root == nil {
+		return math.MaxInt64
+	}
+
+	// 递归计算左右子树的最大值
+	leftMax := findMinValueRecursive(root.Left)
+	rightMax := findMinValueRecursive(root.Right)
+
+	// 计算当前节点和左右子树的最大值
+	currentMax := int(math.Min(float64(root.Val), math.Min(float64(leftMax), float64(rightMax))))
+
+	return currentMax
 }

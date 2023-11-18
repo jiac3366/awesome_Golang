@@ -1,6 +1,8 @@
-package algo
+package btree
 
-import "math"
+import (
+	"math"
+)
 
 // 后序遍历
 func minDepth(root *TreeNode) int {

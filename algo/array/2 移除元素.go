@@ -1,4 +1,4 @@
-package algo
+package array
 
 // {1,2,2,4}
 //        f

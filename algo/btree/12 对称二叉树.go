@@ -1,6 +1,8 @@
-package algo
+package btree
 
-import "container/list"
+import (
+	"container/list"
+)
 
 func isSymmetric(root *TreeNode) bool {
 	return isSymmetricTree(root.Left, root.Right)
