@@ -41,7 +41,9 @@ func findMax(root *TreeNode) int {
 	rightMax := findMax(root.Right)
 
 	// 计算当前节点和左右子树的最大值
-	currentMax := int(math.Max(float64(root.Val), math.Max(float64(leftMax), float64(rightMax))))
+	currentMax := int(
+		math.Max(float64(root.Val),
+			math.Max(float64(leftMax), float64(rightMax))))
 
 	return currentMax
 }
@@ -52,11 +54,34 @@ func findMin(root *TreeNode) int {
 	}
 
 	// 递归计算左右子树的最大值
-	leftMax := findMin(root.Left)
-	rightMax := findMin(root.Right)
+	leftMin := findMin(root.Left)
+	rightMin := findMin(root.Right)
 
 	// 计算当前节点和左右子树的最大值
-	currentMax := int(math.Min(float64(root.Val), math.Min(float64(leftMax), float64(rightMax))))
+	currentMin := int(math.Min(float64(root.Val), math.Min(float64(leftMin), float64(rightMin))))
+	return currentMin
+}
 
-	return currentMax
+// =====================================
+
+func isValidBST(root *TreeNode) bool {
+
+	var pre *TreeNode
+
+	var traversal func(root *TreeNode) bool
+	traversal = func(root *TreeNode) bool {
+		if root == nil {
+			return true
+		}
+		left := traversal(root.Left)
+		if pre != nil && pre.Val >= root.Val {
+			return false
+		}
+		pre = root
+		right := traversal(root.Right)
+
+		return left && right
+	}
+	return traversal(root)
+
 }

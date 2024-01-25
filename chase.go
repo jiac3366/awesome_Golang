@@ -1,8 +1,6 @@
 package main
 
-import (
-	"math"
-)
+import "fmt"
 
 type TreeNode struct {
 	Val   int
@@ -10,82 +8,14 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-// 后序遍历
-func maxDepth(root *TreeNode) int {
-
-	if root == nil {
-		return 0
-	}
-
-	left := float64(maxDepth(root.Left))
-	right := float64(maxDepth(root.Right))
-
-	return int(1 + math.Max(left, right))
-}
-
-// 前序遍历
-// 暂时注释
-//var result int
-/**
- * Definition for a binary tree node.
- * type TreeNode struct {
- *     Val int
- *     Left *TreeNode
- *     Right *TreeNode
- * }
- */
-
-var (
-	_min = math.MaxInt64
-	_max = math.MinInt64
-)
-
-func isValidBST(root *TreeNode) bool {
-
-	findMax(root.Left)
-
-	if root.Val <= _max {
-		return false
-	}
-
-	findMin(root.Right)
-	if root.Val >= _min {
-		return false
-	}
-
-	isLeftValid := isValidBST(root.Left)
-	isRightValid := isValidBST(root.Right)
-
-	return isLeftValid && isRightValid
-
-}
-
-func findMaxValueRecursive(root *TreeNode) int {
-	if root == nil {
-		return math.MinInt64
-	}
-
-	// 递归计算左右子树的最大值
-	leftMax := findMaxValueRecursive(root.Left)
-	rightMax := findMaxValueRecursive(root.Right)
-
-	// 计算当前节点和左右子树的最大值
-	currentMax := int(math.Max(float64(root.Val), math.Max(float64(leftMax), float64(rightMax))))
-
-	return currentMax
-}
-
-func findMinValueRecursive(root *TreeNode) int {
-	if root == nil {
-		return math.MaxInt64
-	}
-
-	// 递归计算左右子树的最大值
-	leftMax := findMinValueRecursive(root.Left)
-	rightMax := findMinValueRecursive(root.Right)
-
-	// 计算当前节点和左右子树的最大值
-	currentMax := int(math.Min(float64(root.Val), math.Min(float64(leftMax), float64(rightMax))))
-
-	return currentMax
+func main() {
+	var arr = [...]int{0, 1, 2, 3, 4, 5, 6}
+	slice1 := arr[1:4:5] //{low:high:max} 最多再扩张一个元素
+	//max超出 len(arr)
+	//slice2 := arr[1:4:7] //panic
+	fmt.Println(slice1)     //[1,2,3]
+	slice3 := slice1[1:3:4] //[2,3] 大于4会panic
+	fmt.Println(slice3)
+	slice4 := slice1[1:4] //[2,3] 大于4会panic
+	fmt.Println(slice4)   //[2 3 4] 出现slice1中没有的元素
 }
