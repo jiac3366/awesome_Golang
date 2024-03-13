@@ -1,4 +1,4 @@
-package ds
+package array
 
 import "fmt"
 
@@ -43,3 +43,5 @@ func main() {
 	// 打印修改后的原始切片
 	fmt.Println(originalSlice) // 输出: [99 2 3 4 5 6]
 }
+
+

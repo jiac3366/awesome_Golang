@@ -34,5 +34,4 @@ func invertTree(root *TreeNode) *TreeNode {
 		}
 	}
 	return root
-
 }
