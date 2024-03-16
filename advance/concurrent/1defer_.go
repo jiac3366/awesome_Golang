@@ -1,6 +1,7 @@
-package concurrent
+package main
 
 import (
+	"errors"
 	"fmt"
 	"sync"
 )
@@ -28,16 +29,11 @@ func withGoroutine(handlers ...func() error) (err error) {
 	return
 }
 
-func Test() (err error) {
-	fmt.Println("test")
-	return
-}
-
 func main() {
 
 	handler1 := func() error {
-		panic("handler1 fail ")
-		return nil
+		//panic("handler1 fail ")
+		return errors.New("hei!")
 	}
 	handler2 := func() error {
 		panic("handler2 fail ")
@@ -45,8 +41,7 @@ func main() {
 	}
 	err := withGoroutine(handler1, handler2)
 	if err != nil {
-		fmt.Printf("！！！err is:%v", err)
+		fmt.Println("！！！err is:%v", err)
 	}
 
-	fmt.Println(Test())
 }
